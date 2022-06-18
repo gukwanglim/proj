@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/2. 박스 그리기/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/2. 박스 그리기/build" />
+      <excludeFolder url="file://$MODULE_DIR$/2. 박스 그리기/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/1. 위젯/build" />
+      <excludeFolder url="file://$MODULE_DIR$/1. 위젯/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/1. 위젯/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 박스 숙제/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 박스 숙제/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 박스 숙제/build" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 나누기 숙제/build" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 나누기 숙제/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/2-1. 나누기 숙제/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/2. 나누기/build" />
+      <excludeFolder url="file://$MODULE_DIR$/2. 나누기/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/2. 나누기/.pub" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

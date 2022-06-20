@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             Text('안녕'),
             Text('안녕'),
             Text('안녕'),
-            Text('안녕')
+            Text('안녕'),
           ]
         ),
         bottomNavigationBar: BottomAppBar(),

@@ -139,7 +139,7 @@ class FlutterHandTrackingPlugin(r: Registrar, id: Int) : PlatformView, MethodCal
             else {
                 for (result in grantResults!!) {
                     if (result == PERMISSION_GRANTED) onResume()
-                    else Toast.makeText(activity, "请授予摄像头权限", Toast.LENGTH_LONG).show()
+                    else Toast.makeText(activity, "카메라 권한 부여", Toast.LENGTH_LONG).show()
                 }
                 true
             }

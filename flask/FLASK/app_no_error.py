@@ -1,16 +1,3 @@
-# 2 - mouse
-
-# 12_left - Previous_page
-# 12_right - Next_page
-# 23 - click
-
-# 125 - PrintScreen
-# 345 - escape_show
-# 123- show_from_current  이상함
-
-# 12345 - show_from_begin
-
-#mediapipe hand
 import cv2
 import mediapipe as mp
 import pyautogui
@@ -19,9 +6,24 @@ import time
 import numpy as np
 import math
 
-from flask import Flask
+from flask import Flask, render_template, request, redirect, Response
+import argparse, logging, logging.config, conf
 
-app = Flask(__name__)
+logging.config.dictConfig(conf.dictConfig)
+logger = logging.getLogger(__name__)
+
+# app = Flask(__name__)
+app = Flask(__name__, template_folder='./templates', static_folder='./static')
+
+
+@app.route('/', methods=['GET', 'POST'])
+def index():
+    return render_template('index.html')
+
+@app.route('/test')
+def ShootPhoto():
+    logger.debug("Requested /")
+    return render_template('ShootPhoto.html')
 
 TIME_Previous_page, TIME_Next_page  = 0, 0 #너무 민감하지 않고 연속으로 너무 많이 실행하지 않고 이전 페이지로 점프하고 다음 페이지로 점프하는 것을 방지하는 데 사용됩니다.。
 delay_Previous_page, delay_Next_page = 1.5, 1.5  #너무 민감하지 않고 연속으로 너무 많이 실행하지 않고 이전 페이지로 점프하고 다음 페이지로 점프하는 것을 방지하는 데 사용됩니다. 2초 간격을 두어
@@ -300,7 +302,7 @@ def hand_gesture(angle_list, keypoint_pos):
         #zero finger
         ##손가락을 안보이는 모습(주먹)
         if (angle_list[0]>90) and (angle_list[1]>90) and (angle_list[2]>90) and (angle_list[3]>90) and (angle_list[4]>90):
-            gesture_str = "0"                   # 0   
+            gesture_str = "click"                   # 0   
 
 
 
@@ -355,7 +357,7 @@ def hand_gesture(angle_list, keypoint_pos):
         
         #검지 손가락, 중지 손가락 (가위 모양)
         if (angle_list[0]>40) and (angle_list[1]<30) and (angle_list[2]<30) and (angle_list[3]>40) and (angle_list[4]>40):
-            gesture_str = "click"
+            gesture_str = "23"
         
         #검지 손가락, 새끼 손가락
         if (angle_list[0]>40) and (angle_list[1]<30) and (angle_list[2]>40) and (angle_list[3]>40) and (angle_list[4]<30):
@@ -824,7 +826,6 @@ def BEHAVIOR(frame, gesture_str, keypoint_pos, angle_list, bounding):
     
     return frame, gesture_str
 
-@app.route('/')
 def detect():
     gesture_dict_for_img_processing = {
         "Nike": None,
@@ -850,7 +851,7 @@ def detect():
     #그리고 index=0으로 카메라를 지정합니다(여러 카메라가 동시에 연결된 경우 다른 값을 설정해야 함)
     cap = cv2.VideoCapture(0)
         
-    cv2.namedWindow('MediaPipe Hands', cv2.WINDOW_NORMAL)
+    # cv2.namedWindow('MediaPipe Hands', cv2.WINDOW_NORMAL)
 
     #프레임의 너비와 높이 설정 = (width, height)
     #pyautogui.size()화면 크기 반환
@@ -967,12 +968,22 @@ def detect():
                     cv2.putText(frame, gesture_str, (10, 60), cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
         #디스플레이 이미지
-        cv2.imshow('MediaPipe Hands', frame) #imshow()에 의해 입력된 이미지는 bgr 형식이어야 하므로 이 때 프레임은 bgr 형식입니다.
+        # cv2.imshow('MediaPipe Hands', frame) #imshow()에 의해 입력된 이미지는 bgr 형식이어야 하므로 이 때 프레임은 bgr 형식입니다.
 
         if cv2.waitKey(1) & 0xFF == 27:
             break
 
-    cap.release()  #실행이 끝나면 카메라 리소스가 해제됩니다.
+        ret, buffer = cv2.imencode('.jpg', frame)
+        frame = buffer.tobytes()
+        yield (b'--frame\r\n'
+               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000, host='127.0.0.1')
+    # cap.release()  #실행이 끝나면 카메라 리소스가 해제됩니다.
+
+@app.route("/video_feed")
+def video_feed():
+    return Response(detect(),
+        mimetype="multipart/x-mixed-replace; boundary=frame")
+
+if __name__ == "__main__":
+    app.run()

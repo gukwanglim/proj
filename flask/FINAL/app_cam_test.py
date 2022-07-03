@@ -6,7 +6,7 @@ import time
 import numpy as np
 import math
 
-from flask import Flask, render_template, request, redirect, Response
+# from flask import Flask, render_template, request, redirect, Response
 import argparse
 import logging
 import logging.config
@@ -16,7 +16,7 @@ logging.config.dictConfig(conf.dictConfig)
 logger = logging.getLogger(__name__)
 
 # app = Flask(__name__)
-app = Flask(__name__, template_folder='./templates', static_folder='./static')
+# app = Flask(__name__, template_folder='./templates', static_folder='./static')
 
 
 # @app.route('/', methods=['GET', 'POST'])
@@ -344,7 +344,7 @@ def hand_gesture(angle_list, keypoint_pos):
         # zero finger
         # 손가락을 안보이는 모습(주먹)
         if (angle_list[0] > 90) and (angle_list[1] > 90) and (angle_list[2] > 90) and (angle_list[3] > 90) and (angle_list[4] > 90):
-            gesture_str = "click"                   # 0
+            gesture_str = "0"                   # 0
 
         # 한 손가락
         # 엄지 손가락을 위로 향함 (UP)
@@ -392,11 +392,11 @@ def hand_gesture(angle_list, keypoint_pos):
 
         # 엄지 손가락, 새끼 손가락
         if (angle_list[0] < 30) and (angle_list[1] > 40) and (angle_list[2] > 40) and (angle_list[3] > 40) and (angle_list[4] < 30):
-            gesture_str = "15"
+            gesture_str = "show_from_begin"          # 15
 
         # 검지 손가락, 중지 손가락 (가위 모양)
         if (angle_list[0] > 40) and (angle_list[1] < 30) and (angle_list[2] < 30) and (angle_list[3] > 40) and (angle_list[4] > 40):
-            gesture_str = "23"
+            gesture_str = "click"
 
         # 검지 손가락, 새끼 손가락
         if (angle_list[0] > 40) and (angle_list[1] < 30) and (angle_list[2] > 40) and (angle_list[3] > 40) and (angle_list[4] < 30):
@@ -451,7 +451,7 @@ def hand_gesture(angle_list, keypoint_pos):
         # 다섯 손가락
         # 다섯 손가락 (보자기 모양)
         if (angle_list[0] < 30) and (angle_list[1] < 30) and (angle_list[2] < 30) and (angle_list[3] < 30) and (angle_list[4] < 30):
-            gesture_str = "show_from_begin"
+            gesture_str = "12345"
 
         # 더 어려운 제스처
         # 14  24  124  1234
@@ -919,7 +919,7 @@ def detect():
     # 그리고 index=0으로 카메라를 지정합니다(여러 카메라가 동시에 연결된 경우 다른 값을 설정해야 함)
     cap = cv2.VideoCapture(0)
 
-    # cv2.namedWindow('MediaPipe Hands', cv2.WINDOW_NORMAL)
+    cv2.namedWindow('MediaPipe Hands', cv2.WINDOW_NORMAL)
 
     # 프레임의 너비와 높이 설정 = (width, height)
     # pyautogui.size()화면 크기 반환
@@ -1044,32 +1044,32 @@ def detect():
                                 cv2.FONT_HERSHEY_PLAIN, 3, (255, 0, 0), 3)
 
         # 디스플레이 이미지
-        # cv2.imshow('MediaPipe Hands', frame) #imshow()에 의해 입력된 이미지는 bgr 형식이어야 하므로 이 때 프레임은 bgr 형식입니다.
+        cv2.imshow('MediaPipe Hands', frame) #imshow()에 의해 입력된 이미지는 bgr 형식이어야 하므로 이 때 프레임은 bgr 형식입니다.
 
         if cv2.waitKey(1) & 0xFF == 27:
             break
 
-        ret, buffer = cv2.imencode('.jpg', frame)
-        frame = buffer.tobytes()
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+        # ret, buffer = cv2.imencode('.jpg', frame)
+        # frame = buffer.tobytes()
+        # yield (b'--frame\r\n'
+        #        b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
 
     # cap.release()  #실행이 끝나면 카메라 리소스가 해제됩니다.
 
     # return render_template('ShootPhoto.html')
 
 
-@app.route("/index3.html")
-def entrypoint():
-    logger.debug("Requested /")
-    return render_template("index3.html")
+# @app.route("/index3.html")
+# def entrypoint():
+#     logger.debug("Requested /")
+#     return render_template("index3.html")
 
 
-@app.route("/video_feed")
-def video_feed():
-    return Response(detect(),
-                    mimetype="multipart/x-mixed-replace; boundary=frame")
+# @app.route("/video_feed")
+# def video_feed():
+#     return Response(detect(),
+#                     mimetype="multipart/x-mixed-replace; boundary=frame")
 
 
 if __name__ == "__main__":
-    app.run()
+    detect()

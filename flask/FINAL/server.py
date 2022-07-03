@@ -419,7 +419,7 @@ def hand_gesture(angle_list, keypoint_pos):
         # zero finger
         # 손가락을 안보이는 모습(주먹)
         if (angle_list[0] > 90) and (angle_list[1] > 90) and (angle_list[2] > 90) and (angle_list[3] > 90) and (angle_list[4] > 90):
-            gesture_str = "click"                   # 0
+            gesture_str = "0"                   # 0
 
         # 한 손가락
         # 엄지 손가락을 위로 향함 (UP)
@@ -467,11 +467,11 @@ def hand_gesture(angle_list, keypoint_pos):
 
         # 엄지 손가락, 새끼 손가락
         if (angle_list[0] < 30) and (angle_list[1] > 40) and (angle_list[2] > 40) and (angle_list[3] > 40) and (angle_list[4] < 30):
-            gesture_str = "15"
+            gesture_str = "show_from_begin"
 
         # 검지 손가락, 중지 손가락 (가위 모양)
         if (angle_list[0] > 40) and (angle_list[1] < 30) and (angle_list[2] < 30) and (angle_list[3] > 40) and (angle_list[4] > 40):
-            gesture_str = "23"
+            gesture_str = "click"
 
         # 검지 손가락, 새끼 손가락
         if (angle_list[0] > 40) and (angle_list[1] < 30) and (angle_list[2] > 40) and (angle_list[3] > 40) and (angle_list[4] < 30):
@@ -526,7 +526,7 @@ def hand_gesture(angle_list, keypoint_pos):
         # 다섯 손가락
         # 다섯 손가락 (보자기 모양)
         if (angle_list[0] < 30) and (angle_list[1] < 30) and (angle_list[2] < 30) and (angle_list[3] < 30) and (angle_list[4] < 30):
-            gesture_str = "show_from_begin"
+            gesture_str = "12345"
 
         # 더 어려운 제스처
         # 14  24  124  1234

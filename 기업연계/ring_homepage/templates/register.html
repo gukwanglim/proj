@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>REGISTER</title>
+
+    <style>
+      body {background-color: #b3e5fc;}
+      #wrap {width: 400px; margin: 0 auto; color: #fff; text-align: center;}
+      #nav {width: 400px; line-height: 40px; background-color: #0288d1;}
+      #side_left {float: left; width: 30px; line-height: 60px; background-color: #039bd5;}
+      #contents {float: left; width: 110px; line-height: 60px; background-color: #03a9f4;}
+      #side_right {float: left; width: 260px; line-height: 60px; background-color: #29b6f6;}
+      #footer {clear: both; margin: 30 auto; width: 400px; line-height: 30px; background-color: #0288d1; text-align: right;}
+    </style>
+
+<script>
+    function check_pw(){
+
+        var pw = document.getElementById('regi_pw').value;
+        var SC = ["!","@","#","$","%"];
+        var check_SC = 0;
+
+        if(pw.length < 6 || pw.length>16){
+            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('regi_pw').value='';
+        }
+        for(var i=0;i<SC.length;i++){
+            if(pw.indexOf(SC[i]) != -1){
+                check_SC = 1;
+            }
+        }
+        if(check_SC == 0){
+            window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+            document.getElementById('regi_pw').value='';
+        }
+        if(document.getElementById('regi_pw').value !='' && document.getElementById('regi_pw_chk').value!=''){
+            if(document.getElementById('regi_pw').value!=document.getElementById('regi_pw_chk').value){
+                window.alert('비밀번호가 일치하지 않습니다.');
+                document.getElementById('regi_pw_chk').value='';
+            }
+        }
+    }
+
+    function check_email(){
+        var email = document.getElementById('regi_email').value;
+        var SC_email_1 = ['@'];
+        var SC_email_2 = ['.'];
+        var ck_SC_email_1 = 0;
+        var ck_SC_email_2 = 0;
+
+        for(var j=0;j<SC_email_1.length;j++){
+            if(email.indexOf(SC_email_1[j]) != -1){
+                ck_SC_email_1 = 1;
+            }
+        }
+
+        for(var k=0;k<SC_email_2.length;k++){
+            if(email.indexOf(SC_email_2[k]) != -1){
+                ck_SC_email_2 = 1;
+            }
+        }
+
+        if(ck_SC_email_1 == 0 || ck_SC_email_2 == 0) {
+            window.alert('이메일 형식에 맞게 작성해주세요.')
+            document.getElementById('regi_email').value='';                       // 문제 발생 시, 입력칸 초기화
+        }
+    }
+
+</script>
+</head>
+
+<body>
+    <form method="POST" id="authForm">
+    <div id="wrap">
+      <div id="nav"><b>Register</b></div>
+
+      <div id="side_left">*</div>
+      <div id="contents">아이디</div>
+      <div id="side_right"><input type="text " id="regi_id" name="regi_id"></div>
+
+      <div id="side_left">*</div>
+      <div id="contents">비밀번호</div>
+      <div id="side_right"><input type="password" id="regi_pw" name="regi_pw" onchange="check_pw()"></div>
+
+      <div id="side_left">*</div>
+      <div id="contents">비밀번호 확인</div>
+      <div id="side_right"><input type="password" id="regi_pw_chk" name="regi_pw_chk" onchange="check_pw()"></div>
+
+      <div id="side_left">*</div>
+      <div id="contents">닉네임</div>
+      <div id="side_right"><input type="text" id="regi_name" name="regi_name"></div>
+
+      <div id="side_left">*</div>
+      <div id="contents">이메일</div>
+      <div id="side_right"><input type="text" id="regi_email" name="regi_email" onchange="check_email()"></div>
+
+      <div id="footer"><input type="submit" name="submit" value="submit" style="WIDTH: 45pt"/></div>
+    </div>
+    </form>
+
+</body>
+</html>
+
+<!-- 참고 : https://tlatmsrud.tistory.com/3 -->
+

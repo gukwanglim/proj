@@ -1,0 +1,1 @@
+SELECT user_id FROM member WHERE user_id LIKE '%te%'

@@ -74,7 +74,7 @@ def register():
         cursor.close()
         conn.close()
 
-    return render_template('register.html', error=error)
+    return render_template('create_account.html', error=error)
 
 @app.route('/home.html/<name>', methods=['GET', 'POST'])
 def home(name):

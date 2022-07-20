@@ -17,9 +17,9 @@
 <script>
     function check_pw(){
 
-        var pw = document.getElementById('regi_pw').value;
-        var SC = ["!","@","#","$","%"];
-        var check_SC = 0;
+        let pw = document.getElementById('regi_pw').value;
+        let SC = ["!","@","#","$","%"];
+        let check_SC = 0;
 
         if(pw.length < 6 || pw.length>16){
             window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
@@ -43,11 +43,11 @@
     }
 
     function check_email(){
-        var email = document.getElementById('regi_email').value;
-        var SC_email_1 = ['@'];
-        var SC_email_2 = ['.'];
-        var ck_SC_email_1 = 0;
-        var ck_SC_email_2 = 0;
+        let email = document.getElementById('regi_email').value;
+        let SC_email_1 = ['@'];
+        let SC_email_2 = ['.'];
+        let ck_SC_email_1 = 0;
+        let ck_SC_email_2 = 0;
 
         for(var j=0;j<SC_email_1.length;j++){
             if(email.indexOf(SC_email_1[j]) != -1){
@@ -103,4 +103,3 @@
 </html>
 
 <!-- 참고 : https://tlatmsrud.tistory.com/3 -->
-

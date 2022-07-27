@@ -1,0 +1,5 @@
+데이터베이스에서 한글을 받아들이지 못할 경우에는
+
+ALTER TABLE member CONVERT TO CHARSET UTF8;
+
+쿼리를 실행시켜야한다.

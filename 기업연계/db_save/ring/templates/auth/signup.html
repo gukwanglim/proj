@@ -1,0 +1,284 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <head>
+<script>
+    function check_pw(){
+
+        let pw = document.getElementById('password1').value;
+        let SC = ["!","@","#","$","%"];
+        let check_SC = 0;
+
+        if(pw.length < 6 || pw.length>16){
+            window.alert('비밀번호는 6글자 이상, 16글자 이하만 이용 가능합니다.');
+            document.getElementById('password1').value='';
+        }
+        for(var i=0;i<SC.length;i++){
+            if(pw.indexOf(SC[i]) != -1){
+                check_SC = 1;
+            }
+        }
+        if(check_SC == 0){
+            window.alert('!,@,#,$,% 의 특수문자가 들어가 있지 않습니다.')
+            document.getElementById('password1').value='';
+        }
+        if(document.getElementById('password1').value !='' && document.getElementById('password2').value!=''){
+            if(document.getElementById('password1').value!=document.getElementById('password2').value){
+                window.alert('비밀번호가 일치하지 않습니다.');
+                document.getElementById('password2').value='';
+            }
+        }
+    }
+
+    function check_email(){
+        let email = document.getElementById('email').value;
+        let SC_email_1 = ['@'];
+        let SC_email_2 = ['.'];
+        let ck_SC_email_1 = 0;
+        let ck_SC_email_2 = 0;
+
+        for(var j=0;j<SC_email_1.length;j++){
+            if(email.indexOf(SC_email_1[j]) != -1){
+                ck_SC_email_1 = 1;
+            }
+        }
+
+        for(var k=0;k<SC_email_2.length;k++){
+            if(email.indexOf(SC_email_2[k]) != -1){
+                ck_SC_email_2 = 1;
+            }
+        }
+
+        if(ck_SC_email_1 == 0 || ck_SC_email_2 == 0) {
+            window.alert('이메일 형식에 맞게 작성해주세요.')
+            document.getElementById('email').value='';                       // 문제 발생 시, 입력칸 초기화
+        }
+    }
+
+</script>
+</head> -->
+
+<div class="offcanvas-overlay"></div>
+
+<!-- Page Title/Header Start -->
+<div class="page-title-section section" data-bg-image="{{ url_for('static', filename='assets/images/bg/page-title-1.webp') }}">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <div class="page-title">
+                    <h1 class="title">Register</h1>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ url_for('main.index') }}">Home</a></li>
+                        <li class="breadcrumb-item"><a href="{{ url_for('auth.login') }}">Login</a></li>
+                        <li class="breadcrumb-item active">Register</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Title/Header End -->
+
+<!-- Login & Register Section Start -->
+
+<!-- <div class="section section-padding">
+    <div class="container">
+        <div class="row g-0">
+            <div class="col-lg-6">
+                <div class="user-login-register bg-light">
+                    <div class="login-register-title">
+                        <h2 class="title">Login</h2>
+                        <p class="desc">Great to have you back!</p>
+                    </div>
+                    <div class="login-register-form">
+                        <form action="#">
+                            <div class="row learts-mb-n50">
+                                <div class="col-12 learts-mb-50">
+                                    <input type="email" placeholder="usernikname or email address">
+                                </div>
+                                <div class="col-12 learts-mb-50">
+                                    <input type="password" placeholder="Password">
+                                </div>
+                                <div class="col-12 text-center learts-mb-50">
+                                    <button class="btn btn-dark btn-outline-hover-dark">login</button>
+                                </div>
+                                <div class="col-12 learts-mb-50">
+                                    <div class="row learts-mb-n20">
+                                        <div class="col-12 learts-mb-20">
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="rememberMe">
+                                                <label class="form-check-label" for="rememberMe">Remember me</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 learts-mb-20">
+                                            <a href="lost-password.html" class="fw-400">Lost your password?</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="user-login-register">
+                    <div class="login-register-title">
+                        <h2 class="title">Register</h2>
+                        <p class="desc">If you don’t have an account, register now!</p>
+                    </div>
+                    <div class="login-register-form">
+                        <form action="#">
+                            <div class="row learts-mb-n50">
+                                <div class="col-12 learts-mb-20">
+                                    <label for="registerEmail">Email address <abbr class="required">*</abbr></label>
+                                    <input type="email" id="registerEmail">
+                                </div>
+                                <div class="col-12 learts-mb-50">
+                                    <p>Your personal data will be used to support your experience throughout this website, to manage access to your account, and for other purposes described in our privacy policy</p>
+                                </div>
+                                <div class="col-12 text-center learts-mb-50">
+                                    <button class="btn btn-dark btn-outline-hover-dark">Register</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div> -->
+
+<!-- Login & Register Section End -->
+
+
+<!-- Login Section Start -->            <!-- style.css에 login부분 추가 -->
+<div class="section section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="offset-xl-1 col-xl-10">
+                <div class="register-form login-form clearfix">
+                    <div class="login-text">
+                        <h2>Create Account</h2>
+                        <p>아래 계정 정보를 사용하여 등록해주세요.</p>
+                        <p>이미 계정을 가지고 있으시면 <a href="{{ url_for('auth.login') }}"><b>Sign In</b></a>을 눌러주세요.</p>
+                    </div>
+                    <form method="post">
+                        {{ form.csrf_token }}
+                        {% include "form_errors.html" %}
+                        <div class="register-form">
+                            <form method="post" action="/account" id="create_customer" accept-charset="UTF-8">
+                                <input type="hidden" name="form_type" value="create_customer" />
+                                <input type="hidden" name="utf8" value="✓" />
+                                    <!-- <div class="form-group row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-form-label"><abbr class="required">*</abbr> ID</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input style="background-color: #ebebeb;" type="text" name="username" id="username" class="form-control" placeholder="ID"  autocapitalize="words" autofocus value="{{ form.username.data or '' }}">
+                                            </div>
+                                    </div>        -->
+
+                                    <div class="form-group row">
+                                        <label for="username" class="col-lg-3 col-md-3 col-form-label"><abbr class="required">*</abbr> ID</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input style="background-color: #ebebeb;" type="text" name="username" id="username" class="form-control" placeholder="Nikname" value="{{ form.username.data or '' }}">
+                                            </div>
+                                    </div>      
+                            
+                                    <div class="form-group row">
+                                        <label for="password1" class="col-lg-3 col-md-3 col-form-label"><abbr class="required">*</abbr> 비밀번호</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input style="background-color: #ebebeb;" type="password" name="password1" id="password1" class="form-control" placeholder="Password"  autocapitalize="words" onchange="check_pw()" value="{{ form.password1.data or '' }}">
+                                            </div>
+                                    </div>    
+            
+                                    <div class="form-group row">
+                                        <label for="password2" class="col-lg-3 col-md-3 col-form-label"><abbr class="required">*</abbr> 비밀번호 확인</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input style="background-color: #ebebeb;" type="password" name="password2" id="password2" class="form-control" placeholder="Check_Password"  autocapitalize="words" onchange="check_pw()" value="{{ form.password2.data or '' }}">
+                                            </div>
+                                    </div>    
+                        
+                                    <div class="form-group row">
+                                        <label for="email" class="col-lg-3 col-md-3 col-form-label"><abbr class="required">*</abbr> 이메일</label>
+                                            <div class="col-lg-6 col-md-6">
+                                                <input style="background-color: #ebebeb;" type="email" name="email" id="email" class="form-control " placeholder="Email"  autocorrect="off" autocapitalize="off" onchange="check_email()" value="{{ form.email.data or '' }}">
+                                            </div>
+                                    </div>              
+            
+                                    <!-- <div class="register-box mt-40 text-center">
+                                        <button type="submit" name="submit" value="submit" class="login-btn" style="border: rgb(224, 216, 216); margin-bottom: 25px;">Create</button>
+                                    </div> -->
+
+                                    <div class="col-12 text-center learts-mb-50">
+                                        <button type="submit" class="btn btn-dark btn-outline-hover-dark">Create</button>
+                                    </div>
+                            </form>
+                            
+                                <div class="account-optional-action text-center">
+                                    <a href="{{ url_for('main.index') }}">Return to Store</a>
+                                </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Login Section End -->
+
+
+<!-- <div class="footer2-section section section-padding">
+    <div class="container">
+        <div class="row learts-mb-n40">
+
+            <div class="col-lg-6 learts-mb-40">
+                <div class="widget-about">
+                    <img src="assets/images/logo/logo-2.webp" alt="">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod itaque recusandae commodi mollitia facere iure nisi, laudantium quis quas perferendis a minus dolores.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4 learts-mb-40">
+                <div class="row">
+                    <div class="col">
+                        <ul class="widget-list">
+                            <li><a href="#">About us</a></li>
+                            <li><a href="#">Store location</a></li>
+                            <li><a href="#">Contact</a></li>
+                            <li><a href="#">Orders</a></li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <ul class="widget-list">
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Support Policy</a></li>
+                            <li><a href="#">Size Guide</a></li>
+                            <li><a href="#">FAQs</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-2 learts-mb-40">
+                <ul class="widget-list">
+                    <li> <i class="fab fa-twitter"></i> <a href="https://www.twitter.com/">Twitter</a></li>
+                    <li> <i class="fab fa-facebook-f"></i> <a href="https://www.facebook.com/">Facebook</a></li>
+                    <li> <i class="fab fa-instagram"></i> <a href="https://www.instagram.com/">Instagram</a></li>
+                    <li> <i class="fab fa-youtube"></i> <a href="https://www.youtube.com/">Youtube</a></li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+<div class="footer2-copyright section">
+    <div class="container">
+        <p class="copyright text-center">&copy; 2020 learts. All Rights Reserved</p>
+    </div>
+</div>
+
+{% endblock %}

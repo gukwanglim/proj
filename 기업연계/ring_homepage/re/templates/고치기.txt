@@ -1,7 +1,7 @@
 "{{ url_for('static', filename='css/vendor/bootstrap.min.css') }}"
 
 assets/
-{{ url_for('static', filename='
+{{ url_for('static', filename='assets/
 
 css"
 css') }}"

@@ -1,0 +1,13 @@
+그냥 html 파일일 경우
+<p><a href="create-account.html" id="customer_register_link">Create account</a></p>
+을 사용하여 create-account.html으로 넘어간다.
+
+하지만 flask를 사용하게 되는 경우 html 파일에서 
+<p><a href="create-account" id="customer_register_link">Create account</a></p>
+을 사용하고 일반 py파일에서
+@app.route('/create-account', methods=['GET', 'POST'])
+을 적용하여 넘어가도록 한다.
+
+위의 
+href="create-account" 대신에 
+onclick="location.href='register.html'"를 사용할 수도 있다.

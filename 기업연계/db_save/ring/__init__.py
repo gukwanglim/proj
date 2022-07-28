@@ -18,11 +18,11 @@ def create_app():
     from . import models         # 플라스크의 migrate 기능을 인식하기 위해 models를 import
 
     # 블루프린트
-    from .views import main_views, index_views, auth_views, shop_views
+    from .views import main_views, index_views, auth_views, shop_views, pages_views
     app.register_blueprint(main_views.bp)
     app.register_blueprint(index_views.bp)
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(shop_views.bp)
-
+    app.register_blueprint(pages_views.bp)
 
     return app 

@@ -61,17 +61,6 @@ def logout():
 def account():
     return render_template('auth/my-account.html')
 
-
-@bp.route('/img/', methods=('GET', 'POST'))
-def img():
-    user = User.query.filter_by(username=form.username.data).first()
-        if not user:
-            error = "존재하지 않는 사용자입니다."
-        elif not check_password_hash(user.password, form.password.data):
-            error = "비밀번호가 올바르지 않습니다."
-        if error is None:
-            session.clear()
-            session['user_id'] = user.id
-            return redirect(url_for('main.index'))
-        flash(error)
-    return render_template('auth/login.html', form=form)
+@bp.route('/lost_password/')
+def lost():
+    return render_template('auth/lost-password.html')

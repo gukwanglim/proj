@@ -20,3 +20,11 @@ class User(db.Model):
     username = db.Column(db.String(150), unique=True, nullable=False)
     password = db.Column(db.String(200), nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
+
+class Product(db.Model):
+    prod_id = db.Column(db.Integer, primary_key=True)
+    prod_image = db.Column(db.String(800), unique=True, nullable=False)
+    prod_name = db.Column(db.String(150), unique=True, nullable=False)
+    prod_price = db.Column(db.String(150), unique=True, nullable=False)
+    prod_quantity = db.Column(db.String(150), unique=False, nullable=True)
+    prod_expand = db.Column(db.String(300), unique=True, nullable=False)

@@ -10945,6 +10945,47 @@ body.offcanvas-open .sticky-header {
   }
 }
 
+/* 사진 넣기 추가 */
+
+/* .image-form {
+  background: #f8f9fa 0 0;
+  -webkit-box-shadow: 2px 2px 11px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 11px 0 rgba(0, 0, 0, 0.1);
+  padding: 30px 30px 20px;
+} */
+
+.modal_image_upload{
+  outline: 2px dashed black ;
+  outline-offset:-10px;
+  text-align: center;
+  transition: all .15s ease-in-out;
+  width:780px;
+  height: 548px;
+}
+
+.modal_title{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.modal_title_side{
+  flex: 0 0 40px;
+  text-align: center;
+}
+
+.modal_image_upload{
+  outline: 2px dashed black ;
+  outline-offset:-10px;
+  text-align: center;
+  transition: all .15s ease-in-out;
+  width:570px;
+  height: 760px;
+}
+/* 사진 넣기 종료 */
+
 .video-banner2 {
   display: -webkit-box;
   display: -webkit-flex;

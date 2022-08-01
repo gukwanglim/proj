@@ -3,13 +3,14 @@
 
 <div class="offcanvas-overlay"></div>
 
+
 <!-- Slider main container Start -->
 <div class="section section-fluid">
     <div class="home8-slider swiper-container">
         <div class="swiper-wrapper">
             <div class="home8-slide-item swiper-slide" data-swiper-autoplay="5000">
                 <div class="home8-slide-image">
-                    <img src="{{ url_for('static', filename='assets/images/slider/home8/slide-1.webp') }}" alt="Slide Image">
+                    <img src="{{ url_for('static', filename='assets/images/market-g6486d0d4b_1280.jpg') }}" alt="Slide Image">
                 </div>
                 <div class="home8-slide-content">
                     <span class="sub-title">Just for you </span>
@@ -26,7 +27,7 @@
             </div>
             <div class="home8-slide-item swiper-slide" data-swiper-autoplay="5000">
                 <div class="home8-slide-image">
-                    <img src="{{ url_for('static', filename='assets/images/slider/home8/slide-2.webp') }}" alt="Slide Image">
+                    <img src="{{ url_for('static', filename='assets/images/unknown.png') }}" alt="Slide Image">
                 </div>
                 <div class="home8-slide-content">
                     <span class="sub-title">Just for you </span>
@@ -83,23 +84,24 @@
 
         <!-- Products Start -->
         <div class="product-carousel">
-            {% for i in prod_images %}
+            {% for i in range(prod | length) %}
             <div class="col">
                 <div class="product">
                     <div class="product-thumb">
                         <a href="product-details.html" class="image">
                             <span class="product-badges">
-                                <span class="onsale">-13%</span>
+                                <!-- <span class="onsale">-13%</span> -->
                             </span>
-                            <img src="{{ i }}" alt="Product Image">
+                            <img src="{{ prod[i].prod_image }}" alt="Product Image">
                         </a>
                         <a href="wishlist.html" class="add-to-wishlist hintT-left" data-hint="Add to wishlist"><i class="far fa-heart"></i></a>
                     </div>
                     <div class="product-info">
-                        <h6 class="title"><a href="product-details.html">Country Feast Set</a></h6>
+                        <h6 class="title"><a href="product-details.html">{{ prod[i].prod_name }}</a></h6>
                         <span class="price">
-                            <span class="old">$45.00</span>
-                        <span class="new">$39.00</span>
+                            <!-- <span class="old">$45.00</span> -->
+                        <!-- <span class="new">$39.00</span> -->
+                            ₩  {{ prod[i].prod_price }}
                         </span>
                         <div class="product-buttons">
                             <a href="#quickViewModal" data-bs-toggle="modal" class="product-button hintT-top" data-hint="Quick View"><i class="fal fa-search"></i></a>

@@ -243,7 +243,7 @@
                             <a href="{{ url_for('account') }}"><i class="fal fa-user"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="fal fa-heart"></i></a>
+                            <a href="{{ url_for('up') }}"><i class="fal fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>
@@ -301,7 +301,7 @@
                 <!-- Header Tools Start -->
                 <div class="col">
                     <div class="header-tools justify-content-end">
-                        {% if g.user %}
+                        {% if session['user_id'] %}
                         <div class="header-logout">
                             <a href="{{ url_for('logout') }}"><img src="{{ url_for('static', filename='assets/images/logout.png') }}" alt="Learts Logo"></a>
                         </div>
@@ -309,7 +309,7 @@
                             <a href="{{ url_for('login') }}"><i class="fal fa-user"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="fal fa-heart"></i></a>
+                            <a href="{{ url_for('up') }}"><i class="fal fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>
@@ -527,7 +527,7 @@
                 <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
-                        {% if g.user %}
+                        {% if session['user_id'] %}
                         <div class="header-logout">
                             <a href="{{ url_for('logout') }}"><img src="{{ url_for('static', filename='assets/images/logout.png') }}" alt="Learts Logo"></a>
                         </div>
@@ -535,7 +535,7 @@
                             <a href="{{ url_for('login') }}"><i class="fal fa-user"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="fal fa-heart"></i></a>
+                            <a href="{{ url_for('up') }}"><i class="fal fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>
@@ -585,7 +585,7 @@
                 <!-- Header Tools Start -->
                 <div class="col-auto">
                     <div class="header-tools justify-content-end">
-                        {% if g.user %}
+                        {% if session['user_id'] %}
                         <div class="header-logout">
                             <a href="{{ url_for('logout') }}"><img src="{{ url_for('static', filename='assets/images/logout.png') }}" alt="Learts Logo"></a>
                         </div>
@@ -593,7 +593,7 @@
                             <a href="{{ url_for('login') }}"><i class="fal fa-user"></i></a>
                         </div>
                         <div class="header-wishlist">
-                            <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="fal fa-heart"></i></a>
+                            <a href="{{ url_for('up') }}"><i class="fal fa-heart"></i></a>
                         </div>
                         <div class="header-cart">
                             <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>
@@ -928,7 +928,7 @@
             </div>
             <div class="offcanvas-buttons">
                 <div class="header-tools">
-                    {% if g.user %}
+                    {% if session['user_id'] %}
                     <div class="header-logout">
                         <a href="{{ url_for('logout') }}"><img src="{{ url_for('static', filename='assets/images/logout.png') }}" alt="Learts Logo"></a>
                     </div>
@@ -936,7 +936,7 @@
                         <a href="{{ url_for('login') }}"><i class="fal fa-user"></i></a>
                     </div>
                     <div class="header-wishlist">
-                        <a href="#offcanvas-wishlist" class="offcanvas-toggle"><span class="wishlist-count">3</span><i class="fal fa-heart"></i></a>
+                        <a href="{{ url_for('up') }}"><i class="fal fa-heart"></i></a>
                     </div>
                     <div class="header-cart">
                         <a href="#offcanvas-cart" class="offcanvas-toggle"><span class="cart-count">3</span><i class="fal fa-shopping-cart"></i></a>
